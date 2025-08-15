@@ -1,7 +1,7 @@
 import { View, Text, TextInput } from "react-native";
-import React from "react";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import { useState } from "react";
+import { router } from "expo-router";
 
 const SearchInput = ({ placeholder = "Search dishes, restaurants" }) => {
   const [searchValue, setSearchValue] = useState("");
@@ -11,8 +11,13 @@ const SearchInput = ({ placeholder = "Search dishes, restaurants" }) => {
   };
 
   const handleSearchSubmit = () => {
-    console.log(searchValue);
-    setSearchValue("");
+    if (searchValue.trim()) {
+      router.push({
+        pathname: "/search",
+        params: { query: searchValue.trim() },
+      });
+      setSearchValue("");
+    }
   };
 
   return (
