@@ -17,8 +17,11 @@ const SearchPage = () => {
   const [searchResults, setSearchResults] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  const handleCard = () => {
-    return null;
+  const handleCard = (selectedItem) => {
+    router.push({
+      pathname: "/detailedCard",
+      params: { query: JSON.stringify(selectedItem) },
+    });
   };
 
   // Mock search function - replace with your actual search API
