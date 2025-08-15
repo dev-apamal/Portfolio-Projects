@@ -1,50 +1,134 @@
-# Welcome to your Expo app 👋
+# Food Delivery App
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+A modern food delivery application built with React Native, Expo, and Firebase. Users can browse restaurants, place orders, and track deliveries in real-time.
 
-## Get started
+## Table of Contents
 
-1. Install dependencies
+- [Features](#features)
+- [Tech Stack](#tech-stack)
+- [Prerequisites](#prerequisites)
+- [Installation](#installation)
+- [Running the App](#running-the-app)
+- [Project Structure](#project-structure)
+- [License](#license)
+
+## Features
+
+- **Authentication** - Email/password and Google login
+- **Restaurant Discovery** - Browse by cuisine, rating, and location
+- **Menu & Cart** - Add items, customize orders, and checkout
+- **Order Tracking** - Real-time status updates and delivery tracking
+- **Payment Integration** - Secure payments with Stripe
+- **Push Notifications** - Order updates and promotions
+- **User Profiles** - Manage addresses, payment methods, and order history
+
+## Tech Stack
+
+- React Native with Expo
+- Firebase (Authentication, Firestore, Storage, Cloud Functions)
+- Redux Toolkit
+- React Native Maps
+- Expo Notifications
+- Stripe for payments
+
+## Prerequisites
+
+- Node.js (v16+)
+- Expo CLI (`npm install -g @expo/cli`)
+- Firebase account
+
+## Installation
+
+1. **Clone and install**
 
    ```bash
+   git clone <repository-url>
+   cd food-delivery-app
    npm install
    ```
 
-2. Start the app
+2. **Firebase Setup**
+   - Create a Firebase project
+   - Enable Authentication (Email/Password, Google)
+   - Create Firestore database
+   - Set up Storage bucket
+   - Copy configuration to `firebaseConfig.js`:
 
-   ```bash
-   npx expo start
+   ```javascript
+   import { initializeApp } from "firebase/app";
+   import { getAuth } from "firebase/auth";
+   import { getFirestore } from "firebase/firestore";
+   import { getStorage } from "firebase/storage";
+
+   const firebaseConfig = {
+     apiKey: "your-api-key",
+     authDomain: "your-project.firebaseapp.com",
+     projectId: "your-project-id",
+     storageBucket: "your-project.appspot.com",
+     messagingSenderId: "123456789",
+     appId: "your-app-id",
+   };
+
+   const app = initializeApp(firebaseConfig);
+   export const auth = getAuth(app);
+   export const db = getFirestore(app);
+   export const storage = getStorage(app);
    ```
 
-In the output, you'll find options to open the app in a
+3. **Environment Variables**
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+   Create `.env` file:
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+   ```env
+   EXPO_PUBLIC_FIREBASE_API_KEY=your_firebase_api_key
+   EXPO_PUBLIC_FIREBASE_PROJECT_ID=your_firebase_project_id
+   EXPO_PUBLIC_STRIPE_PUBLISHABLE_KEY=your_stripe_key
+   EXPO_PUBLIC_GOOGLE_MAPS_API_KEY=your_maps_key
+   ```
 
-## Get a fresh project
-
-When you're ready, run:
+## Running the App
 
 ```bash
-npm run reset-project
+# Start development server
+expo start
+
+# Run on specific platforms
+expo start --ios
+expo start --android
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+## Project Structure
 
-## Learn more
+```
+├── components/         # Reusable UI components
+├── app/           # App screens (Auth, Home, Restaurant, Cart, Orders)
+├── services/          # Firebase and API services
+├── store/            # Redux store and slices
+├── helpers/            # Helper functions
+└── constants/        # App constants
+```
 
-To learn more about developing your project with Expo, look at the following resources:
+## Firestore Collections
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+- **users** - User profiles and preferences
+- **restaurants** - Restaurant data and menus
+- **orders** - Order history and tracking
+- **categories** - Food categories and cuisines
 
-## Join the community
+## Main Dependencies
 
-Join our community of developers creating universal apps.
+```json
+{
+  "expo": "~49.0.0",
+  "react-native": "0.72.6",
+  "@react-navigation/native": "^6.1.0",
+  "@reduxjs/toolkit": "^1.9.0",
+  "firebase": "^10.0.0",
+  "expo-notifications": "~0.20.0",
+  "react-native-maps": "1.7.1"
+}
+```
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+## License
+
+MIT License

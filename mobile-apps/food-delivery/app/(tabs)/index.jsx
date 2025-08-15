@@ -5,6 +5,7 @@ import { chipsData } from "../../assets/data/chipsData";
 import { useState } from "react";
 import Cards from "../../components/ui/cards";
 import { CardsData } from "../../assets/data/cardsData";
+import { router } from "expo-router";
 
 export default function FoodScreen() {
   const [selectedChipId, setSelectedChipId] = useState(null);
@@ -32,7 +33,10 @@ export default function FoodScreen() {
   };
 
   const handleCard = (selectedItem) => {
-    console.log(selectedItem.id);
+    router.push({
+      pathname: "/detailedCard",
+      params: { query: JSON.stringify(selectedItem) },
+    });
   };
 
   const renderCards = ({ item }) => (
