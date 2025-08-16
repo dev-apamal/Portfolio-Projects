@@ -89,7 +89,7 @@ project-name/
 
 | Project Name  | Description                               | Status | Demo |
 | ------------- | ----------------------------------------- | ------ | ---- |
-| _Coming Soon_ | _Project descriptions will be added here_ | 🚧     | -    |
+| _Food Delivery App_ | _Project descriptions will be added here_ | 🚧     | -    |
 
 ## 🎯 Features & Patterns
 
