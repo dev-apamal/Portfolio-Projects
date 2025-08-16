@@ -36,11 +36,11 @@ export default function TabsLayout() {
         }}
       />
       <Tabs.Screen
-        name="history"
+        name="cart"
         options={{
-          title: "History",
+          title: "Cart",
           tabBarIcon: ({ color, size }) => (
-            <MaterialIcons name="history" size={size} color={color} />
+            <MaterialIcons name="shopping-cart" size={size} color={color} />
           ),
         }}
       />
