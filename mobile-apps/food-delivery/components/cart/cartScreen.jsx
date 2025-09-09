@@ -11,9 +11,11 @@ import {
 import { useCart } from "../../context/cartContext";
 import { CartItem } from "./cartItem";
 import { colors } from "../../constants/styles";
+import { useRouter } from "expo-router";
 
 export const CartScreen = () => {
   const { cart, clearCart } = useCart();
+  const router = useRouter();
 
   const handleClearCart = () => {
     Alert.alert(
@@ -43,7 +45,7 @@ export const CartScreen = () => {
         { text: "Cancel", style: "cancel" },
         {
           text: "Proceed",
-          onPress: () => console.log("Proceeding to checkout..."),
+          onPress: () => router.push("/orderSuccess"),
         },
       ]
     );

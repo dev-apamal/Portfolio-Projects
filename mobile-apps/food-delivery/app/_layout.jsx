@@ -24,6 +24,7 @@ export default function RootLayout() {
         <Stack.Screen name="detailedCard" options={{ headerShown: false }} />
         <Stack.Screen name="search" options={{ headerShown: false }} />
         <Stack.Screen name="cart" options={{ headerShown: false }} />
+        <Stack.Screen name="orderSuccess" options={{ headerShown: false }} />
       </Stack>
     </CartProvider>
   );
